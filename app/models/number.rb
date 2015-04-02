@@ -4,6 +4,9 @@ class Number < ActiveRecord::Base
   # before_create :send_sms
 
 private
+  def number_params
+    require(:number).permit(:name, :phone)
+  end
   # begin
   #   def send_sms
   #     RestClient::Request.new(
