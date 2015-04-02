@@ -1,8 +1,10 @@
 require 'spec_helper'
 require 'rails_helper'
 
-describe Message, :vcr => true do
-  it "doesn't save the message if twilio throws an error" do
+describe Message do
+  it { should belong_to :user }
+  it { should belong_to :number }
+  it "doesn't save the message if twilio throws an error", :vcr => true do
     message = Message.new(
       :body => 'Hello jello mold',
       :to => '1111111',
@@ -11,7 +13,7 @@ describe Message, :vcr => true do
     expect(message.save).to be_falsey
   end
 
-  it 'adds an error if the number is invalid' do
+  it 'adds an error if the number is invalid', :vcr => true do
     message = Message.new(
     :body => 'Hello jello mold',
     :to => '1111111',
