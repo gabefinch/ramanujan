@@ -15,6 +15,7 @@ gem 'bootstrap_form'
 gem 'bootswatch-rails'
 gem 'rest-client'
 gem 'letter_opener', :group => :development
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
