@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-3">
+    <%= link_to "Add number", numbers_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-xs-6">
+    <div class="well well-sm">
+      <h4>
+        Phone Numbers
+        <span class="badge">
+          <%= current_user.numbers.count %>
+        </span>
+      </h4>
+    </div>
+
+    <% current_user.numbers.each do |number| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= number.name %>
+      </div>
+      <div class="panel-body">
+        <em><%= number.phone %></em>
+        <span class="pull-right">
+          Messages
+          <span class="label-danger badge">
+            <%= number.messages.count %>
+          </span>
+        </span>
+      </div>
+    </div>
+    <% end %>
+  </div>

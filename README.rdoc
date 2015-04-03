@@ -1,28 +1,38 @@
-== README
+Ramanujan, a Twilio backed texting app
+======================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+by Gabe Finch & Dan Wright
 
-Things you may want to cover:
+This is a simple Ruby/Rails texting app.
 
-* Ruby version
+Installation
+------------
 
-* System dependencies
+Install Ramanujan by first cloning the repository.
+```
+$ git clone http://github.com/gabefinch/ramanujan.git
+```
 
-* Configuration
+Start the database:
+```
+$ postgres
+```
 
-* Database creation
+Create the databases, tables, and test environment by running the following:
+```
+$ rake db:create
+$ rake db:migrate
+$ rake db:test:prepare
+```
 
-* Database initialization
+Start the rails server:
+```
+$ rails s
+```
 
-* How to run the test suite
+In your web browser, go to http://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+License
+-------
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+GNU GPL v2. Copyright 2015

@@ -1,9 +1,30 @@
-<h1>Messages</h1>
 
-<ul>
-  <% @messages.each do |message| %>
-  <li><%= link_to message.id, message_path(message) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-sm-3">
+    <%= link_to "New Message", new_message_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-xs-6">
+    <div class="well well-sm">
+      <h4>
+        Messages
+        <span class="badge">
+          <%= current_user.messages.count %>
+        </span>
+      </h4>
+    </div>
 
-<%= link_to "New Message", new_message_path %>
+    <% current_user.messages.each do |message| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <em><%= message.from %></em> =>
+        <em><%= message.to %></em>
+      </div>
+      <div class="panel-body">
+        <%= message.body %>
+        <span class="pull-right"><small><%= time_ago_in_words(message.created_at)%> ago</small></span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
