@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h2><%= @user.email %></h2>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="well well-sm">
+      <h4>
+        Phone Numbers
+        <span class="badge">
+          <%= @user.numbers.count %>
+        </span>
+      </h4>
+    </div>
+
+    <% @user.numbers.each do |number| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= number.name %>
+      </div>
+      <div class="panel-body">
+        <em><%= number.phone %></em>
+        <span class="pull-right">
+          Messages
+          <span class="label-danger badge">
+            <%= number.messages.count %>
+          </span>
+        </span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-6">
+    <div class="well well-sm">
+      <h4>
+        Messages
+        <span class="badge">
+          <%= @user.messages.count %>
+        </span>
+      </h4>
+    </div>
+
+    <% @user.messages.each do |message| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <em><%= message.from %></em> =>
+        <em><%= message.to %></em>
+      </div>
+      <div class="panel-body">
+        <%= message.body %>
+        <span class="pull-right"><small><%= time_ago_in_words(message.created_at)%> ago</small></span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

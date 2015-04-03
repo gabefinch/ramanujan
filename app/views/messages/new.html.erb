@@ -20,10 +20,10 @@
       </div>
       <div class="panel-body">
         <%= bootstrap_form_for @message do |f| %>
-          <%= f.text_field :to, placeholder: "To" %>
+          <%= f.collection_select(:to, current_user.numbers, :phone, :phone) %>
           <%= f.text_field :from, placeholder: "From"%>
           <%= f.text_field :body, placeholder: "Body" %>
-          <%= f.submit "Send" %>
+          <%= f.submit "Send", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>
